@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{restaurant.nom}} — Restaurant</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --primaire: {{couleurs.primaire}};
+      --secondaire: {{couleurs.secondaire}};
+      --fond: {{couleurs.fond}};
+      --texte: {{couleurs.texte}};
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; background: var(--fond); color: var(--texte); }
+    .nav { display: flex; justify-content: space-between; align-items: center; padding: 1.25rem 2rem; background: var(--primaire); color: white; }
+    .nav .logo { font-weight: 900; font-size: 1.25rem; letter-spacing: -0.02em; }
+    .nav .cta { padding: 0.5rem 1.25rem; background: var(--secondaire); color: white; text-decoration: none; border-radius: 6px; font-weight: 600; font-size: 0.85rem; }
+    .hero { padding: 5rem 2rem 3rem; max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
+    .hero h1 { font-size: 3.5rem; font-weight: 900; line-height: 1.05; letter-spacing: -0.03em; color: var(--primaire); }
+    .hero h1 span { color: var(--secondaire); }
+    .hero p { color: #64748B; margin-top: 1rem; line-height: 1.6; }
+    .hero .stats { display: flex; gap: 2rem; margin-top: 2rem; }
+    .hero .stat .num { font-size: 1.5rem; font-weight: 800; color: var(--primaire); }
+    .hero .stat .label { font-size: 0.75rem; color: #94A3B8; text-transform: uppercase; letter-spacing: 0.05em; }
+    .hero .image { border-radius: 16px; overflow: hidden; aspect-ratio: 4/3; background: #E2E8F0; }
+    .hero .image img { width: 100%; height: 100%; object-fit: cover; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 3rem 2rem; }
+    .section-titre { font-size: 2rem; font-weight: 800; color: var(--primaire); margin-bottom: 0.5rem; }
+    .section-sous { color: #64748B; margin-bottom: 2rem; }
+    .menu-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.25rem; }
+    .plat { background: white; border-radius: 12px; padding: 1.5rem; border: 1px solid #E2E8F0; transition: border-color 0.2s; }
+    .plat:hover { border-color: var(--secondaire); }
+    .plat .top { display: flex; justify-content: space-between; align-items: start; gap: 1rem; }
+    .plat h3 { font-weight: 700; color: var(--primaire); }
+    .plat .prix { color: var(--secondaire); font-weight: 800; white-space: nowrap; }
+    .plat .desc { font-size: 0.85rem; color: #64748B; margin-top: 0.5rem; line-height: 1.5; }
+    .plat .tag { display: inline-block; margin-top: 0.5rem; padding: 0.2rem 0.6rem; background: #F1F5F9; border-radius: 4px; font-size: 0.7rem; color: #475569; }
+    .cta-section { background: var(--primaire); color: white; padding: 4rem 2rem; text-align: center; margin-top: 3rem; }
+    .cta-section h2 { font-size: 2.5rem; font-weight: 900; }
+    .cta-section p { opacity: 0.8; margin: 0.5rem 0 2rem; }
+    .cta { display: inline-block; padding: 0.85rem 2.5rem; background: var(--secondaire); color: white; text-decoration: none; border-radius: 6px; font-weight: 700; }
+    .cta:hover { opacity: 0.9; }
+    footer { text-align: center; padding: 2rem; color: #94A3B8; font-size: 0.8rem; }
+    @media (max-width: 768px) { .hero { grid-template-columns: 1fr; } .hero h1 { font-size: 2.5rem; } }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <span class="logo">{{restaurant.nom}}</span>
+    <a href="#reservation" class="cta">Réserver</a>
+  </nav>
+  <div class="hero">
+    <div>
+      <h1>Bienvenue chez <span>{{restaurant.nom}}</span></h1>
+      <p>{{restaurant.ville}} — une expérience culinaire unique, ouverte tous les jours.</p>
+      <div class="stats">
+        <div class="stat"><div class="num">4.8</div><div class="label">Note</div></div>
+        <div class="stat"><div class="num">120+</div><div class="label">Avis</div></div>
+        <div class="stat"><div class="num">11h-22h</div><div class="label">Ouvert</div></div>
+      </div>
+    </div>
+    <div class="image">
+      <img src="{{hero}}" alt="{{restaurant.nom}}" />
+    </div>
+  </div>
+  <div class="container">
+    <h2 class="section-titre">Notre carte</h2>
+    <p class="section-sous">Découvrez nos spécialités, préparées avec soin chaque jour.</p>
+    <div class="menu-grid">
+      {{menu}}
+    </div>
+  </div>
+  <div class="cta-section">
+    <h2>Une table vous attend</h2>
+    <p>Réservez en ligne en 30 secondes — confirmation instantanée par WhatsApp.</p>
+    <a href="#reservation" class="cta">Réserver maintenant</a>
+  </div>
+  <footer>
+    {{restaurant.nom}} · Restaurant Suite · Royal Digital Solution
+  </footer>
+</body>
+</html>

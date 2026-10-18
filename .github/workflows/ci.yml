@@ -1,0 +1,76 @@
+name: CI — Build & Test
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-and-test:
+    name: Build & Test
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_DB: perissos_restaurant_test
+          POSTGRES_USER: perissos
+          POSTGRES_PASSWORD: dev_password
+        ports:
+          - 5433:5432
+        options: >-
+          --health-cmd "pg_isready -U perissos -d perissos_restaurant_test"
+          --health-interval 5s
+          --health-timeout 3s
+          --health-retries 10
+
+    env:
+      DATABASE_URL: postgres://perissos:dev_password@localhost:5433/perissos_restaurant_test
+      EVERGAUZY_MODE: postgres
+      SESSION_SECRET: ci-test-secret-not-for-production
+      DEMO_PRESENTATION: "1"
+      NODE_ENV: test
+
+    steps:
+      - name: Checkout du code
+        uses: actions/checkout@v4
+
+      - name: Installation de pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 9
+
+      - name: Installation de Node.js 24
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+
+      - name: Installation des dépendances
+        run: pnpm install --frozen-lockfile
+
+      - name: Typecheck (racine)
+        run: pnpm typecheck
+
+      - name: Migrations (base de test)
+        run: pnpm db:migrate:test
+
+      - name: Seed (base de test)
+        run: pnpm db:seed:test
+
+      - name: Tests (Vitest)
+        run: pnpm test
+
+      - name: Build frontend
+        run: pnpm web:build
+
+      - name: Typecheck frontend
+        run: pnpm --prefix web run typecheck
+EOF
+echo "ci.yml écrit"

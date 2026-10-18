@@ -1,0 +1,45 @@
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "08:00"
+      timezone: "Africa/Abidjan"
+    commit-message:
+      prefix: "deps"
+      prefix-development: "deps-dev"
+    open-pull-requests-limit: 5
+    reviewers:
+      - "perissos/lead"
+    labels:
+      - "dependencies"
+      - "magen-p0"
+
+  - package-ecosystem: "npm"
+    directory: "/web"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "08:00"
+      timezone: "Africa/Abidjan"
+    commit-message:
+      prefix: "deps-web"
+    open-pull-requests-limit: 3
+    reviewers:
+      - "perissos/lead"
+    labels:
+      - "dependencies"
+      - "frontend"
+
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    commit-message:
+      prefix: "ci"
+    labels:
+      - "ci"
+      - "magen-p1"

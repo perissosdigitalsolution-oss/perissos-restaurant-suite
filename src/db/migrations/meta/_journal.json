@@ -1,0 +1,34 @@
+{
+  "version": "7",
+  "dialect": "postgresql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1792091442010,
+      "tag": "0000_youthful_toxin",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1792112995269,
+      "tag": "0001_stormy_purifiers",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1792293706376,
+      "tag": "0002_left_squirrel_girl",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1792319397950,
+      "tag": "0003_sticky_puff_adder",
+      "breakpoints": true
+    }
+  ]
+}

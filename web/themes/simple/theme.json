@@ -1,0 +1,20 @@
+{
+  "id": "simple",
+  "nom": "Simple & Propre",
+  "description": "Thème minimaliste et léger. Idéal pour les petits restaurants et food trucks. Chargement ultra-rapide, même en 3G.",
+  "auteur": "Perissos",
+  "version": "1.0.0",
+  "categorie": "restaurant",
+  "previewUrl": "/themes/simple/preview.png",
+  "couleurs": {
+    "primaire": "#064E3B",
+    "secondaire": "#D4AF37",
+    "fond": "#FDFCF7",
+    "texte": "#1F2937"
+  },
+  "polices": {
+    "titres": "Fraunces",
+    "corps": "Inter"
+  },
+  "pages": ["accueil", "menu", "reservation"]
+}

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{restaurant.nom}} — Restaurant</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,700;0,900;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --primaire: {{couleurs.primaire}};
+      --secondaire: {{couleurs.secondaire}};
+      --fond: {{couleurs.fond}};
+      --texte: {{couleurs.texte}};
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; background: var(--fond); color: var(--texte); }
+    .hero {
+      min-height: 60vh;
+      background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('{{hero}}') center/cover no-repeat;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 3rem 2rem;
+    }
+    .hero h1 { font-family: 'Fraunces', serif; font-size: 3.5rem; font-weight: 900; letter-spacing: -0.02em; }
+    .hero .sous-titre { font-family: 'Fraunces', serif; font-style: italic; font-size: 1.25rem; margin-top: 0.75rem; opacity: 0.9; }
+    .hero .badges { margin-top: 1.5rem; display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
+    .hero .badge { padding: 0.4rem 1rem; border: 1px solid rgba(255,255,255,0.4); border-radius: 999px; font-size: 0.8rem; }
+    .container { max-width: 1080px; margin: 0 auto; padding: 3rem 1.5rem; }
+    .section-titre { font-family: 'Fraunces', serif; font-size: 2rem; color: var(--primaire); margin-bottom: 0.5rem; }
+    .section-sous { color: #6B7280; font-size: 0.95rem; margin-bottom: 2rem; }
+    .menu-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; }
+    .plat { background: white; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 16px rgba(0,0,0,0.06); transition: transform 0.2s; }
+    .plat:hover { transform: translateY(-2px); }
+    .plat .contenu { padding: 1.5rem; }
+    .plat h3 { font-family: 'Fraunces', serif; font-size: 1.15rem; color: var(--primaire); }
+    .plat .prix { color: var(--secondaire); font-weight: 700; font-size: 1.1rem; margin-top: 0.5rem; }
+    .plat .desc { font-size: 0.85rem; color: #6B7280; margin-top: 0.5rem; line-height: 1.5; }
+    .cta-section { background: var(--primaire); color: white; text-align: center; padding: 3rem 2rem; margin-top: 3rem; border-radius: 16px; }
+    .cta-section h2 { font-family: 'Fraunces', serif; font-size: 2rem; }
+    .cta-section p { opacity: 0.85; margin: 0.5rem 0 1.5rem; }
+    .cta { display: inline-block; padding: 0.85rem 2.5rem; background: var(--secondaire); color: white; text-decoration: none; border-radius: 8px; font-weight: 600; }
+    .cta:hover { opacity: 0.9; }
+    footer { text-align: center; padding: 2rem; color: #9CA3AF; font-size: 0.8rem; border-top: 1px solid #E5E7EB; margin-top: 2rem; }
+  </style>
+</head>
+<body>
+  <div class="hero">
+    <h1>{{restaurant.nom}}</h1>
+    <p class="sous-titre">{{restaurant.ville}} — une cuisine qui vous ressemble</p>
+    <div class="badges">
+      <span class="badge">Ouvert 11h – 22h30</span>
+      <span class="badge">Réservation en ligne</span>
+      <span class="badge">Commande à emporter</span>
+    </div>
+  </div>
+  <div class="container">
+    <h2 class="section-titre">Notre carte</h2>
+    <p class="section-sous">Découvrez nos spécialités, préparées avec soin chaque jour.</p>
+    <div class="menu-grid">
+      {{menu}}
+    </div>
+    <div class="cta-section">
+      <h2>Réservez votre table</h2>
+      <p>En ligne, 24h/24 — confirmation instantanée par WhatsApp.</p>
+      <a href="#reservation" class="cta">Réserver maintenant</a>
+    </div>
+  </div>
+  <footer>
+    {{restaurant.nom}} · Restaurant Suite · Royal Digital Solution
+  </footer>
+</body>
+</html>

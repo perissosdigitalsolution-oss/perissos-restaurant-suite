@@ -1,0 +1,29 @@
+# CODEOWNERS — Revue obligatoire sur les fichiers critiques
+# Toute PR touchant ces fichiers doit être approuvée par le Lead.
+
+# Sécurité — Protocole Magen (Couche 2, 3, 5)
+/src/auth/                    @perissos/lead
+/src/validation/              @perissos/lead
+/src/monitoring/              @perissos/lead
+docs/PROTOCOLE-MAGEN.md       @perissos/lead
+docs/POLITIQUE-TESTS.md      @perissos/lead
+
+# Infrastructure
+docker-compose.yml            @perissos/lead
+Caddyfile                     @perissos/lead
+.github/workflows/            @perissos/lead
+.env.example                  @perissos/lead
+
+# Configuration critique
+src/config.ts                 @perissos/lead
+src/db/schema.ts              @perissos/lead
+drizzle.config.ts             @perissos/lead
+
+# Documentation de gouvernance
+AGENTS.md                     @perissos/lead
+docs/HANDOVER.md              @perissos/lead
+docs/VISION.md                @perissos/lead
+docs/ALIGNEMENT-COMMERCIAL.md @perissos/lead
+
+# Défaut : tout le reste
+*                             @perissos/lead

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{restaurant.nom}} — Restaurant</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --primaire: {{couleurs.primaire}};
+      --secondaire: {{couleurs.secondaire}};
+      --fond: {{couleurs.fond}};
+      --texte: {{couleurs.texte}};
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; background: var(--fond); color: var(--texte); }
+    .hero { background: var(--primaire); color: white; padding: 4rem 2rem; text-align: center; }
+    .hero h1 { font-family: 'Fraunces', serif; font-size: 3rem; font-weight: 900; }
+    .hero p { opacity: 0.85; margin-top: 0.5rem; }
+    .container { max-width: 960px; margin: 0 auto; padding: 2rem 1.5rem; }
+    .menu-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
+    .plat { background: white; border-radius: 12px; padding: 1.25rem; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+    .plat h3 { font-family: 'Fraunces', serif; font-size: 1.1rem; color: var(--primaire); }
+    .plat .prix { color: var(--secondaire); font-weight: 700; margin-top: 0.5rem; }
+    .plat .desc { font-size: 0.85rem; color: #6B7280; margin-top: 0.5rem; }
+    .cta { display: inline-block; margin-top: 2rem; padding: 0.75rem 2rem; background: var(--secondaire); color: white; text-decoration: none; border-radius: 8px; font-weight: 600; }
+    .cta:hover { opacity: 0.9; }
+    footer { text-align: center; padding: 2rem; color: #9CA3AF; font-size: 0.8rem; }
+  </style>
+</head>
+<body>
+  <div class="hero">
+    <h1>{{restaurant.nom}}</h1>
+    <p>{{restaurant.ville}} · Ouvert 11h – 22h30</p>
+  </div>
+  <div class="container">
+    <h2 style="font-family:'Fraunces',serif; font-size:1.8rem; color:var(--primaire);">Notre carte</h2>
+    <div class="menu-grid">
+      {{menu}}
+    </div>
+    <div style="text-align:center;">
+      <a href="#reservation" class="cta">Réserver une table</a>
+    </div>
+  </div>
+  <footer>
+    {{restaurant.nom}} · Restaurant Suite · Royal Digital Solution
+  </footer>
+</body>
+</html>

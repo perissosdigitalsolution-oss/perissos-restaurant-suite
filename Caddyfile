@@ -1,0 +1,30 @@
+# Caddy — reverse proxy TLS automatique pour Perissos
+# En production : remplacer "localhost" par votre domaine (ex. perissos.digital)
+{
+    # Email pour Let's Encrypt
+    email {$CADDY_EMAIL:admin@perissos.digital}
+}
+
+{$CADDY_DOMAIN:localhost} {
+    # Redirection HTTP → HTTPS automatique (gérée par Caddy)
+    reverse_proxy host.docker.internal:4040
+
+    # En-têtes de sécurité supplémentaires
+    header {
+        Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+        X-Content-Type-Options "nosniff"
+        X-Frame-Options "DENY"
+        Referrer-Policy "strict-origin-when-cross-origin"
+        Permissions-Policy "geolocation=(), microphone=(), camera=()"
+        -Server
+    }
+
+    # Compression
+    encode gzip zstd
+
+    # Logs
+    log {
+        output stdout
+        format console
+    }
+}

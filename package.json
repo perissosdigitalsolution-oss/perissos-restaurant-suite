@@ -1,0 +1,48 @@
+{
+  "name": "chafik-agent",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Chafik — agent IA de la Périssos Restaurant Suite : function calling sur Ever Gauzy + LLM compatible OpenAI via Cloudflare",
+  "type": "module",
+  "engines": {
+    "node": ">=18.17"
+  },
+  "scripts": {
+    "build": "tsc",
+    "demo": "tsx src/demo.ts",
+    "chat": "tsx src/chat.ts",
+    "whatsapp": "tsx src/whatsapp/serveur.ts",
+    "whatsapp:simuler": "tsx src/whatsapp/simulateur.ts",
+    "whatsapp:rappels": "tsx src/whatsapp/rappels.ts",
+    "web": "npm run web:build && npm run web:api",
+    "web:dev": "node scripts/web-dev.mjs",
+    "web:api": "tsx src/serveur-web.ts",
+    "web:start": "node scripts/web-start.mjs",
+    "web:stop": "node scripts/web-stop.mjs",
+    "web:build": "npm --prefix web run build",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "drizzle-kit migrate",
+    "db:migrate:test": "DATABASE_URL=postgres://perissos:dev_password@localhost:5433/perissos_restaurant_test drizzle-kit migrate",
+    "db:seed": "tsx src/db/seed.ts",
+    "db:seed:test": "DATABASE_URL=postgres://perissos:dev_password@localhost:5433/perissos_restaurant_test tsx src/db/seed.ts",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@sentry/node": "^11.8.0",
+    "bcryptjs": "^3.0.3",
+    "dotenv": "^16.4.5",
+    "drizzle-orm": "^0.45.4",
+    "pg": "^8.23.1",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@types/bcryptjs": "^2.4.6",
+    "@types/node": "^20.14.0",
+    "@types/pg": "^8.23.1",
+    "drizzle-kit": "^0.31.11",
+    "tsx": "^4.15.0",
+    "typescript": "^5.5.4",
+    "vitest": "^2.1.9"
+  }
+}

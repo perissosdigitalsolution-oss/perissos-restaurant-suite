@@ -1,0 +1,20 @@
+{
+  "id": "elegant",
+  "nom": "Élégant & Chaleureux",
+  "description": "Thème raffiné avec photos pleine largeur et typographie serif. Idéal pour les restaurants gastronomiques et les brasseries.",
+  "auteur": "Perissos",
+  "version": "1.0.0",
+  "categorie": "restaurant",
+  "previewUrl": "/themes/elegant/preview.png",
+  "couleurs": {
+    "primaire": "#1F2937",
+    "secondaire": "#D4AF37",
+    "fond": "#FDFCF7",
+    "texte": "#374151"
+  },
+  "polices": {
+    "titres": "Fraunces",
+    "corps": "Inter"
+  },
+  "pages": ["accueil", "menu", "reservation"]
+}
